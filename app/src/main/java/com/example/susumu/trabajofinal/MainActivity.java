@@ -1,5 +1,6 @@
 package com.example.susumu.trabajofinal;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -68,11 +69,18 @@ public class MainActivity extends ActionBarActivity {
 
             if (usuario == null) {
                 msg = "Usuario no encontrado";
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                etNombre.setText("");
+                etContrasena.setText("");
             } else {
                 msg = usuario.getNombre() + " " + usuario.getApellido();
+                Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
+                intent.putExtra("userId", etNombre.getText().toString());
+                intent.putExtra("nombreCompleto", msg);
+                startActivity(intent);
             }
 
-            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 
         }
     };

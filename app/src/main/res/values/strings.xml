@@ -2,11 +2,14 @@
 <resources>
 
     <string name="app_name">TrabajoFinal</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="user_id">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="login">Ingresar</string>
+
+    <string name="mainmenu">Menú principal</string>
+    <string name="takeorder">Tomar pedido</string>
+    <string name="pending">Pendientes</string>
 
 </resources>
