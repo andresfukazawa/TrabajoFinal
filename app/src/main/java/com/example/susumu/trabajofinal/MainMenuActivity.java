@@ -1,5 +1,6 @@
 package com.example.susumu.trabajofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -32,7 +33,8 @@ public class MainMenuActivity extends ActionBarActivity {
     View.OnClickListener btTomarPedidoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(MainMenuActivity.this, SeleccionarMesaActivity.class);
+            startActivity(intent);
         }
     };
 

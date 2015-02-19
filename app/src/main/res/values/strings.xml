@@ -12,4 +12,7 @@
     <string name="takeorder">Tomar pedido</string>
     <string name="pending">Pendientes</string>
 
+    <string name="selecttable">Seleccione la mesa</string>
+    <!--<string name="takeorder">Tomar pedido</string>-->
+
 </resources>

@@ -80,10 +80,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
 
-            //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-
         }
     };
-
 
 }
