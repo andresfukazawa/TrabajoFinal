@@ -13,6 +13,12 @@
     <string name="pending">Pendientes</string>
 
     <string name="selecttable">Seleccione la mesa</string>
-    <!--<string name="takeorder">Tomar pedido</string>-->
+
+    <string name="appetizer">Entradas</string>
+    <string name="maindish">Plato Fuerte</string>
+    <string name="dessert">Postres</string>
+    <string name="calculate">Calcular</string>
+    <string name="cancel">Cancelar</string>
+    <string name="invoice">Factura</string>
 
 </resources>

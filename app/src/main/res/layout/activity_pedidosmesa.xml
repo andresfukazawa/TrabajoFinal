@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTOMesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btTOEntrada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/appetizer"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btTOPlatoFuerte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/maindish"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btTOPostre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/dessert"
+            android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btTOCalcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        android:textSize="24dp"/>
+
+    <Button
+        android:id="@+id/btTOCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:textSize="24dp"/>
+
+    <Button
+        android:id="@+id/btTOFacturar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invoice"
+        android:textSize="24dp"/>
+
+</LinearLayout>

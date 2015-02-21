@@ -1,5 +1,6 @@
 package com.example.susumu.trabajofinal;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,6 +42,11 @@ public class SeleccionarMesaActivity extends ActionBarActivity {
         @Override
         public void onClick(View v) {
 
+            Intent intent = new Intent(SeleccionarMesaActivity.this, PedidosMesaActivity.class);
+//            intent.putExtra("mesa", spMesa.getSelectedItem().toString());
+            intent.putExtra("mesa", spMesa.getSelectedItem().toString().substring(spMesa.getSelectedItem().toString().indexOf(" ") + 1));
+            startActivity(intent);
+            //example.substring(example.lastIndexOf("/") + 1)
         }
     };
 
