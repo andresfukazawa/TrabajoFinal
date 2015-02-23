@@ -21,4 +21,6 @@
     <string name="cancel">Cancelar</string>
     <string name="invoice">Factura</string>
 
+    <string name="filterhint">Filtro de búsqueda</string>
+
 </resources>

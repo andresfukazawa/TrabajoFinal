@@ -1,10 +1,12 @@
 package com.example.susumu.trabajofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.susumu.trabajofinal.R;
 
@@ -42,21 +44,21 @@ public class PedidosMesaActivity extends ActionBarActivity {
     View.OnClickListener btEntradasOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            mostrarMenu("1", getIntent().getExtras().getString("mesa").toString());
         }
     };
 
     View.OnClickListener btPFuertesOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            mostrarMenu("2", getIntent().getExtras().getString("mesa").toString());
         }
     };
 
     View.OnClickListener btPostresOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            mostrarMenu("3", getIntent().getExtras().getString("mesa").toString());
         }
     };
 
@@ -80,4 +82,11 @@ public class PedidosMesaActivity extends ActionBarActivity {
 
         }
     };
+
+    private void mostrarMenu(String tipo, String mesa) {
+        Intent intent = new Intent(PedidosMesaActivity.this, MostrarMenuActivity.class);
+        intent.putExtra("tipo", tipo);
+        intent.putExtra("mesa", mesa);
+        startActivity(intent);
+    }
 }

@@ -20,6 +20,7 @@
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".SeleccionarMesaActivity" />
         <activity android:name=".PedidosMesaActivity" />
+        <activity android:name=".MostrarMenuActivity" />
 
     </application>
 
