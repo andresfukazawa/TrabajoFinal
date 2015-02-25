@@ -1,11 +1,18 @@
 package com.example.susumu.trabajofinal;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +48,7 @@ public class MostrarMenuActivity extends ActionBarActivity {
 
         lvMenu.setAdapter(mLVMenuAdapter);
         etFiltro.addTextChangedListener(etMenuTextWatcher);
+
     }
 
     private void populateList(String tipo) {
@@ -48,7 +56,7 @@ public class MostrarMenuActivity extends ActionBarActivity {
         mLstString = new ArrayList<>();
 
         try{
-            cursor = DataBaseHelper.myDataBase.query("PRODUCTO", null, "PRODTIP=?", new String[]{tipo}, null, null, "PRODNOM");            Toast.makeText(MostrarMenuActivity.this, "Point B", Toast.LENGTH_SHORT).show();
+            cursor = DataBaseHelper.myDataBase.query("PRODUCTO", null, "PRODTIP=?", new String[]{tipo}, null, null, "PRODNOM");
             if(cursor.moveToFirst()) {
                 do {
                     mLstString.add(cursor.isNull(cursor.getColumnIndex("PRODNOM")) ? "" : cursor.getString(cursor.getColumnIndex("PRODNOM")));
@@ -80,6 +88,36 @@ public class MostrarMenuActivity extends ActionBarActivity {
 //            Log.d("watcher", s.toString());
             mLVMenuAdapter.getFilter().filter(s.toString());
             mLVMenuAdapter.notifyDataSetChanged();
+//            Toast.makeText(MostrarMenuActivity.this, mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_second, menu);
+        menu.findItem(R.id.ic_action_add).setVisible(true);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ic_action_add:
+                ContentValues cv = new ContentValues();
+                cv.put("mesa", Integer.valueOf(getIntent().getExtras().getString("mesa")));
+                cv.put("prodnom", mLVMenuAdapter.getItem(0).toString());
+                DataBaseHelper.myDataBase.insert("pedidos_pendientes",null,cv);
+
+                Toast.makeText(MostrarMenuActivity.this, "Mesa " + getIntent().getExtras().getString("mesa") + " Ordeno : " + mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent();
+//                intent.putExtra("TextA", etSecondA.getText().toString());
+//                intent.putExtra("TextB", etSecondB.getText().toString());
+                setResult(RESULT_OK, intent);
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

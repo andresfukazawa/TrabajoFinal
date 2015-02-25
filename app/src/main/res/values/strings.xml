@@ -23,4 +23,6 @@
 
     <string name="filterhint">Filtro de búsqueda</string>
 
+    <string name="order">Ordenar</string>
+
 </resources>
