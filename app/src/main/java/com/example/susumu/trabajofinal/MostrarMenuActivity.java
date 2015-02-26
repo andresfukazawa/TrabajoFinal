@@ -85,10 +85,9 @@ public class MostrarMenuActivity extends ActionBarActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-//            Log.d("watcher", s.toString());
+            Log.d("watcher", s.toString());
             mLVMenuAdapter.getFilter().filter(s.toString());
             mLVMenuAdapter.notifyDataSetChanged();
-//            Toast.makeText(MostrarMenuActivity.this, mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
         }
     };
 
@@ -103,18 +102,33 @@ public class MostrarMenuActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ic_action_add:
-                ContentValues cv = new ContentValues();
-                cv.put("mesa", Integer.valueOf(getIntent().getExtras().getString("mesa")));
-                cv.put("prodnom", mLVMenuAdapter.getItem(0).toString());
-                DataBaseHelper.myDataBase.insert("pedidos_pendientes",null,cv);
+                Log.d("susumu", String.valueOf(mLVMenuAdapter.getCount()));
+                //lvMenu.getCount()
+                if (lvMenu.getCount() == 1) {
+                //if (mLVMenuAdapter.getCount() == 1) {
+                    ContentValues cv = new ContentValues();
+                    cv.put("mesa", Integer.valueOf(getIntent().getExtras().getString("mesa")));
+                    cv.put("prodnom", mLVMenuAdapter.getItem(0).toString());
+                    long temp = DataBaseHelper.myDataBase.insert("pedidos_pendientes", null, cv);
+                    Log.d("susumu", mLVMenuAdapter.getItem(0).toString());
+                    Log.d("susumu", String.valueOf(temp));
+                    //Toast.makeText(MostrarMenuActivity.this, "Mesa " + getIntent().getExtras().getString("mesa") + " ordenó : " + mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MostrarMenuActivity.this, "insert : " + String.valueOf(temp), Toast.LENGTH_LONG).show();
 
-                Toast.makeText(MostrarMenuActivity.this, "Mesa " + getIntent().getExtras().getString("mesa") + " Ordeno : " + mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
+                    // temporary
+                    Cursor cursor = null;
+                    cursor = DataBaseHelper.myDataBase.query("pedidos_pendientes", null, "idx=?", new String[]{String.valueOf(temp - 1)}, null, null, null);
+                    cursor.moveToFirst();
+                    Toast.makeText(MostrarMenuActivity.this, "anterior : " + cursor.getString(cursor.getColumnIndex("prodnom")), Toast.LENGTH_LONG).show();
+                    //cursor.isNull(cursor.getColumnIndex("prodnom")) ? "" : cursor.getString(cursor.getColumnIndex("prodnom"))
+                    if (cursor != null) cursor.close();
 
-                Intent intent = new Intent();
+                    Intent intent = new Intent();
 //                intent.putExtra("TextA", etSecondA.getText().toString());
 //                intent.putExtra("TextB", etSecondB.getText().toString());
-                setResult(RESULT_OK, intent);
-                finish();
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
