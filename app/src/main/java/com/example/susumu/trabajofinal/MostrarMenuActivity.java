@@ -102,7 +102,7 @@ public class MostrarMenuActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ic_action_add:
-                Log.d("susumu", String.valueOf(mLVMenuAdapter.getCount()));
+//                Log.d("susumu", String.valueOf(mLVMenuAdapter.getCount()));
                 //lvMenu.getCount()
                 if (lvMenu.getCount() == 1) {
                 //if (mLVMenuAdapter.getCount() == 1) {
@@ -110,16 +110,16 @@ public class MostrarMenuActivity extends ActionBarActivity {
                     cv.put("mesa", Integer.valueOf(getIntent().getExtras().getString("mesa")));
                     cv.put("prodnom", mLVMenuAdapter.getItem(0).toString());
                     long temp = DataBaseHelper.myDataBase.insert("pedidos_pendientes", null, cv);
-                    Log.d("susumu", mLVMenuAdapter.getItem(0).toString());
-                    Log.d("susumu", String.valueOf(temp));
+//                    Log.d("susumu", mLVMenuAdapter.getItem(0).toString());
+//                    Log.d("susumu", String.valueOf(temp));
                     //Toast.makeText(MostrarMenuActivity.this, "Mesa " + getIntent().getExtras().getString("mesa") + " ordenó : " + mLVMenuAdapter.getItem(0).toString(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(MostrarMenuActivity.this, "insert : " + String.valueOf(temp), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MostrarMenuActivity.this, "insert : " + String.valueOf(temp), Toast.LENGTH_LONG).show();
 
                     // temporary
                     Cursor cursor = null;
                     cursor = DataBaseHelper.myDataBase.query("pedidos_pendientes", null, "idx=?", new String[]{String.valueOf(temp - 1)}, null, null, null);
                     cursor.moveToFirst();
-                    Toast.makeText(MostrarMenuActivity.this, "anterior : " + cursor.getString(cursor.getColumnIndex("prodnom")), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MostrarMenuActivity.this, "anterior : " + cursor.getString(cursor.getColumnIndex("prodnom")), Toast.LENGTH_LONG).show();
                     //cursor.isNull(cursor.getColumnIndex("prodnom")) ? "" : cursor.getString(cursor.getColumnIndex("prodnom"))
                     if (cursor != null) cursor.close();
 
